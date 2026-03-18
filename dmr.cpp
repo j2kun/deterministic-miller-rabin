@@ -3,8 +3,13 @@
 #include <cstdint>
 
 // Bases to test. Using the first 12 prime bases makes the test deterministic
-// for all 64-bit integers. See https://oeis.org/A014233.
-int64_t bases[] = {2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37};
+// for all 64-bit integers. However, without 128-bit integer support there is a
+// risk of overflow.
+// int64_t bases[] = {2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37};
+
+// Bases to test. Using the first 4 prime bases makes the test deterministic
+// for all 32-bit integers. See https://oeis.org/A014233.
+int64_t bases[] = {2, 3, 5, 7};
 
 inline int countTrailingZeros(uint64_t n) {
   if (n == 0)
@@ -51,6 +56,7 @@ int64_t modularExponentiation(int64_t base, int64_t exponent, int64_t modulus) {
 
   while (e > 0) {
     if (e & 1) {
+      // this doesn't overflow because we assume 32-bit integer inputs
       res = (res * b) % modulus;
     }
     b = (b * b) % modulus;
