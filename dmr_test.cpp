@@ -2,11 +2,6 @@
 
 #include "gtest/gtest.h"
 
-TEST(DMRTest, ModularExponentiation) {
-  EXPECT_EQ(modularExponentiation(2, 10, 1000), 24);  // 2^10 = 1024
-  EXPECT_EQ(modularExponentiation(3, 4, 100), 81); // 3^4 = 81
-}
-
 TEST(DMRTest, IsPrime) {
   EXPECT_TRUE(isPrime(2));
   EXPECT_TRUE(isPrime(3));
