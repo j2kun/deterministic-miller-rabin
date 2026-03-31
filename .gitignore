@@ -1,5 +1,2 @@
 MODULE.bazel.lock
-bazel-bin
-bazel-miller-rabin
-bazel-out
-bazel-testlogs
+bazel-*
