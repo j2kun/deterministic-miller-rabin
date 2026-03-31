@@ -37,6 +37,7 @@ bool isPrime(int64_t n) {
       continue;
     bool composite = true;
     for (unsigned r = 1; r < s; ++r) {
+      // Doesn't overflow because it is at most n < 32 bits
       x = (x * x) % n;
       if (x == n - 1) {
         composite = false;
@@ -56,7 +57,7 @@ int64_t modularExponentiation(int64_t base, int64_t exponent, int64_t modulus) {
 
   while (e > 0) {
     if (e & 1) {
-      // this doesn't overflow because we assume 32-bit integer inputs
+      // Doesn't overflow because we assume 32-bit integer inputs
       res = (res * b) % modulus;
     }
     b = (b * b) % modulus;
